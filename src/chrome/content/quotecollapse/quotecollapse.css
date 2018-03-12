@@ -1,0 +1,14 @@
+blockquote[type="cite"] {
+ background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
+ background-repeat: no-repeat;
+ background-position: top left;
+ max-height: 2.25ex;
+ padding-bottom: 0px ! important;
+ overflow: -moz-hidden-unscrollable;
+}
+
+blockquote[type="cite"][qctoggled="true"] {
+ background-image: url("chrome://quotecollapse/skin/twisty-open.png");
+ max-height: none;
+ overflow: visible;
+}

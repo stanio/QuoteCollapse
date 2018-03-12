@@ -48,34 +48,18 @@ var QuoteCollapse = {
 
  // this is called when loading the document; time to insert style
   _onLoad: function(event) {
-    var messageDocument = QuoteCollapse._messagePane.contentDocument; 
+    let messageDocument = event.target;
     if( ! messageDocument.getElementsByTagName("blockquote").item(0) ) return; // nothing to be done
     messageDocument.addEventListener("click", QuoteCollapse._onClick, false);
-    messageDocument.getElementsByTagName("body").item(0).className='mailview'; // class for customizing
+    messageDocument.body.classList.add('mailview'); // class for customizing
 
-    // the following is inspired by code from quotecolors
-    var StyleElement = messageDocument.createElement("style");
-    StyleElement.type = "text/css";
-    // we don't need a BODY.mailview qualifier here
-    var stylecontent='\
-blockquote[type="cite"] {\n\
- background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");\n\
- background-repeat: no-repeat;\n\
- background-position: top left;\n\
- max-height: 2.25ex;\n\
- padding-bottom: 0px ! important;\n\
- overflow: -moz-hidden-unscrollable;\n\
-}\n\
-\n\
-blockquote[type="cite"][qctoggled="true"] {\n\
- background-image: url("chrome://quotecollapse/skin/twisty-open.png");\n\
- max-height: none;\n\
- overflow: visible;\n\
-}\n\
-';
-    var styletext = document.createTextNode(stylecontent);
-    StyleElement.appendChild(styletext);
-    messageDocument.getElementsByTagName("head").item(0).appendChild(StyleElement);
+    let domWindow = messageDocument.defaultView
+                        .QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+                        .getInterface(Components.interfaces.nsIDOMWindowUtils);
+    console.log("Loading QuoteCollapse style sheet...");
+    let ioService = Components.classes["@mozilla.org/network/io-service;1"]
+                              .getService(Components.interfaces.nsIIOService);
+    domWindow.loadSheet(ioService.newURI("chrome://quotecollapse/content/quotecollapse.css"), 0); // AGENT_SHEET
 
     for(let quote of QuoteCollapse._getQuoteRoots(messageDocument.body)) {
       QuoteCollapse._toggleFullyVisible(quote);
