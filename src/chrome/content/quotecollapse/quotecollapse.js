@@ -53,6 +53,14 @@ var QuoteCollapse = {
     messageDocument.addEventListener("click", QuoteCollapse._onClick, false);
     messageDocument.body.classList.add('mailview'); // class for customizing
 
+    for (let gmailQuote of messageDocument.querySelectorAll("blockquote.gmail_quote, blockquote.quote")) {
+      gmailQuote.setAttribute("type", "cite");
+      gmailQuote.style.margin = "";
+      gmailQuote.style.border = "";
+      gmailQuote.style.padding = "";
+      //gmailQuote.style.background = "";
+    }
+
     let domWindow = messageDocument.defaultView
                         .QueryInterface(Components.interfaces.nsIInterfaceRequestor)
                         .getInterface(Components.interfaces.nsIDOMWindowUtils);
