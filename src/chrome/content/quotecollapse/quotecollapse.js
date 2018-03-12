@@ -43,7 +43,7 @@ var QuoteCollapse = {
   onMailWindowLoad : function(event) {
     QuoteCollapse._messagePane = document.getElementById('messagepane'); // browser parenting the document
     // messagePane.addEventListener("click", QuoteCollapse._onClick, false); // cpould also reg. on doc
-    QuoteCollapse._messagePane.addEventListener("load", QuoteCollapse._onLoad, true); // wait for doc to be loaded
+    QuoteCollapse._messagePane.addEventListener("DOMContentLoaded", QuoteCollapse._onLoad, true); // wait for doc to be loaded
   },
 
  // this is called when loading the document; time to insert style
