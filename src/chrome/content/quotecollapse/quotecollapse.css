@@ -1,9 +1,19 @@
 blockquote[type="cite"] {
+ max-height: 1.2em;
+ overflow: -moz-hidden-unscrollable;
+ position: relative;
+}
+
+blockquote[type="cite"]::before {
+ position: absolute;
+ content: '';
+ top: 0;
+ left: 0;
+ width: 9px;
+ height: 9px;
  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
  background-repeat: no-repeat;
  background-position: top left;
- max-height: 1.2em;
- overflow: -moz-hidden-unscrollable;
 }
 
 blockquote[type="cite"]:not([qctoggled="true"]) {
@@ -11,7 +21,10 @@ blockquote[type="cite"]:not([qctoggled="true"]) {
 }
 
 blockquote[type="cite"][qctoggled="true"] {
- background-image: url("chrome://quotecollapse/skin/twisty-open.png");
  max-height: none;
  overflow: visible;
+}
+
+blockquote[type="cite"][qctoggled="true"]::before {
+ background-image: url("chrome://quotecollapse/skin/twisty-open.png");
 }
