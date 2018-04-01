@@ -165,7 +165,7 @@ var QuoteCollapse = {
 
 
 // react only to active spot (leave rest for copy etc.)
-    if(event.pageX > target.offsetLeft+12) return true;
+    if(event.pageX > target.getBoundingClientRect().left+10) return true;
     
     if(event.shiftKey)
       if(event.ctrlKey || event.metaKey)
