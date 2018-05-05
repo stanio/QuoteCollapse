@@ -82,6 +82,22 @@ blockquote[type="cite"]:not([qctoggled="true"]) blockquote[type="cite"] {\n\
     var styletext = document.createTextNode(stylecontent);
     StyleElement.appendChild(styletext);
     messageDocument.getElementsByTagName("head").item(0).appendChild(StyleElement);
+
+    function isFullyExpanded(quote) {
+      if(quote.clientHeight < quote.scrollHeight)
+        return false;
+
+      for(let nested of quote.querySelectorAll("blockquote")) {
+        if(!isFullyExpanded(nested))
+          return false;
+      }
+      return true;
+    }
+
+    for(let quote of messageDocument.querySelectorAll("blockquote")) {
+      if(isFullyExpanded(quote))
+        quote.setAttribute("qctoggled", "true");
+    }
   },
 
   _getState: function(node) {
