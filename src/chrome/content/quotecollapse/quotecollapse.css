@@ -2,7 +2,7 @@ blockquote[type="cite"] {
  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
  background-repeat: no-repeat;
  background-position: top left;
- max-height: 2.25ex;
+ max-height: 1.2em;
  overflow: -moz-hidden-unscrollable;
 }
 

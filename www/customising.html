@@ -65,7 +65,7 @@ blockquote[type="cite"] {
   background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
   background-repeat: no-repeat;
   background-position: top left;
-  max-height: 2.25ex;
+  max-height: 1.2em;
   padding-bottom: 0px ! important;
   overflow: -moz-hidden-unscrollable;
 }
@@ -102,7 +102,7 @@ BODY.mailview blockquote[type="cite"][qctoggled="false"] {
   background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
   background-repeat: no-repeat !important;
   background-position: top left !important;
-  max-height: 2ex !important;
+  max-height: 1.2em !important;
   padding-bottom: 0px !important;
   overflow: -moz-hidden-unscrollable !important;
 } 
@@ -138,7 +138,7 @@ BODY.mailview blockquote[type="cite"] blockquote[type="cite"] {
   background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
   background-repeat: no-repeat !important;
   background-position: top left !important;
-  max-height: 2ex !important;
+  max-height: 1.2em !important;
   padding-bottom: 0px !important;
   overflow: -moz-hidden-unscrollable !important;
 }
@@ -178,7 +178,7 @@ BODY.mailview DIV > pre:first-child + blockquote[type="cite"] {
   background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
   background-repeat: no-repeat !important;
   background-position: top left !important;
-  max-height: 2ex !important;
+  max-height: 1.2em !important;
   padding-bottom: 0px !important;
   overflow: -moz-hidden-unscrollable !important;
 }
@@ -197,13 +197,13 @@ The same remark as above applies. Also, if you want twisties inside of the first
  <CODE><PRE>
 /* partially reveal first level collapsed quotes */
 BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) {
-  max-height: 6.5em !important;
+  max-height: 9em !important;
 }
 
 /* always have nested collapsed quotes reveal just one line of text */
 BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) blockquote[type="cite"] {
   background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
-  max-height: 2ex !important;
+  max-height: 1.2em !important;
   overflow: -moz-hidden-unscrollable !important;
 }</PRE></CODE>
 </LI>
