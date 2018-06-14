@@ -91,27 +91,22 @@ none</CODE>, and replace other <CODE>height</CODE> usages for <CODE>max-height</
 <LI> Expand all quotes by default:
 <CODE><PRE>
 BODY.mailview blockquote[type="cite"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-open.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-open.png");
+  max-height: none;
+  overflow: visible;
 }
 
 BODY.mailview blockquote[type="cite"][qctoggled="false"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: 1.2em !important;
-  padding-bottom: 0px !important;
-  overflow: -moz-hidden-unscrollable !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
+  max-height: 1.2em;
+  overflow: -moz-hidden-unscrollable;
 } 
 </PRE></CODE>
 
 <LI> No twisty when expanded:
 <CODE><PRE>
 BODY.mailview blockquote[type="cite"][qctoggled="true"] {
-  background-image: none ! important ;
+  background-image: none;
 }
 </PRE></CODE>
 </LI>
@@ -119,7 +114,7 @@ BODY.mailview blockquote[type="cite"][qctoggled="true"] {
 <LI> Minimize collapsed size to the height of the twisty:
  <CODE><PRE>
 BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) {
-  max-height: 9px !important;
+  max-height: 9px;
 }
  </PRE></CODE>
 </LI>
@@ -128,27 +123,22 @@ BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) {
  <CODE><PRE>
 /* overwrite quotecollapse default */
 blockquote[type="cite"] {
-  background-image: none !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: none;
+  max-height: none;
+  overflow: visible;
 }
 
 /* reinstate for level 1 and above: */
 BODY.mailview blockquote[type="cite"] blockquote[type="cite"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: 1.2em !important;
-  padding-bottom: 0px !important;
-  overflow: -moz-hidden-unscrollable !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
+  max-height: 1.2em;
+  overflow: -moz-hidden-unscrollable;
 }
 
 BODY.mailview blockquote[type="cite"] blockquote[type="cite"][qctoggled="true"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-open.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-open.png");
+  max-height: none;
+  overflow: visible;
 }
  </PRE></CODE>
 </LI>
@@ -157,9 +147,9 @@ BODY.mailview blockquote[type="cite"] blockquote[type="cite"][qctoggled="true"] 
  <CODE><PRE>
 /* overwrite quotecollapse default for first quote */
 DIV > pre:first-child + blockquote[type="cite"] {
-  background-image: none !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: none;
+  max-height: none;
+  overflow: visible;
 }</PRE></CODE>
  This may need to be tweaked depending on quoting styles. E.g., add the same rule for blockquotes which are first childs instead of adjacent to a first child pre.
 </LI>
@@ -168,27 +158,22 @@ DIV > pre:first-child + blockquote[type="cite"] {
  <CODE><PRE>
 /* overwrite quotecollapse default for first quote */
 blockquote[type="cite"] {
-  background-image: none !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: none;
+  max-height: none;
+  overflow: visible;
 }
 
 /* reinstate for second quote and following: */
 BODY.mailview DIV > pre:first-child + blockquote[type="cite"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: 1.2em !important;
-  padding-bottom: 0px !important;
-  overflow: -moz-hidden-unscrollable !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
+  max-height: 1.2em;
+  overflow: -moz-hidden-unscrollable;
 }
 
 BODY.mailview DIV > pre:first-child + blockquote[type="cite"][qctoggled="true"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-open.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: top left !important;
-  max-height: none !important;
-  overflow: visible !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-open.png");
+  max-height: none;
+  overflow: visible;
 }</PRE></CODE>
 The same remark as above applies. Also, if you want twisties inside of the first quote, add rules for level 1 and deeper (see the example on expanding 1st level).
 </LI>
@@ -197,14 +182,14 @@ The same remark as above applies. Also, if you want twisties inside of the first
  <CODE><PRE>
 /* partially reveal first level collapsed quotes */
 BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) {
-  max-height: 9em !important;
+  max-height: 9em;
 }
 
 /* always have nested collapsed quotes reveal just one line of text */
 BODY.mailview blockquote[type="cite"]:not([qctoggled="true"]) blockquote[type="cite"] {
-  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png") !important;
-  max-height: 1.2em !important;
-  overflow: -moz-hidden-unscrollable !important;
+  background-image: url("chrome://quotecollapse/skin/twisty-clsd.png");
+  max-height: 1.2em;
+  overflow: -moz-hidden-unscrollable;
 }</PRE></CODE>
 </LI>
 
