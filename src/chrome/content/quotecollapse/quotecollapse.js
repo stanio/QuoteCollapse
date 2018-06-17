@@ -77,7 +77,7 @@ blockquote[type="cite"][qctoggled="true"] {\n\
     StyleElement.appendChild(styletext);
     messageDocument.getElementsByTagName("head").item(0).appendChild(StyleElement);
 
-    for(let quote of messageDocument.querySelectorAll("blockquote")) {
+    for(let quote of QuoteCollapse._getQuoteRoots(messageDocument.body)) {
       QuoteCollapse._toggleFullyVisible(quote);
     }
   },
@@ -86,7 +86,7 @@ blockquote[type="cite"][qctoggled="true"] {\n\
     if(quote.clientHeight < quote.scrollHeight)
       return false;
 
-    for(let nested of quote.querySelectorAll("blockquote")) {
+    for(let nested of QuoteCollapse._getQuoteRoots(quote)) {
       if(!toggleFullyVisible(nested))
         return false;
     }
@@ -222,10 +222,10 @@ blockquote[type="cite"][qctoggled="true"] {\n\
       levels = { expanded: new MinMaxValues(),
                  collapsed: new MinMaxValues() };
 
-    let nestedQuotes = getQuoteRoots(node);
-    for(let i = 0; i < nestedQuotes.length; i++) {
-      if(nestedQuotes[i].getAttribute("qctoggled") == "true")
-        getToggleLevels(nestedQuotes[i], current + 1, levels);
+    let nestedQuotes = QuoteCollapse._getQuoteRoots(node);
+    for(let nested of nestedQuotes) {
+      if(nested.getAttribute("qctoggled") == "true")
+        getToggleLevels(nested, current + 1, levels);
       else {
         levels.collapsed.update(current);
         if(current > 0)
@@ -238,16 +238,6 @@ blockquote[type="cite"][qctoggled="true"] {\n\
 
     return levels;
 
-    function getQuoteRoots(node, result = []) {
-      for(let i = 0; i < node.children.length; i++) {
-        if(node.children[i].localName == "blockquote")
-          result.push(node.children[i]);
-        else
-          getQuoteRoots(node.children[i], result);
-      }
-      return result;
-    }
-
     function MinMaxValues() {
       this.min = null;
       this.max = null;
@@ -258,6 +248,15 @@ blockquote[type="cite"][qctoggled="true"] {\n\
     }
   },
 
+  _getQuoteRoots: function getQuoteRoots(node, result = []) {
+    for(let childElement of node.children) {
+      if(childElement.localName == "blockquote")
+        result.push(childElement);
+      else
+        getQuoteRoots(childElement, result);
+    }
+    return result;
+  },
 
 };
 
