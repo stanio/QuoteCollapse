@@ -3,8 +3,11 @@ blockquote[type="cite"] {
  background-repeat: no-repeat;
  background-position: top left;
  max-height: 2.25ex;
- padding-bottom: 0px ! important;
  overflow: -moz-hidden-unscrollable;
+}
+
+blockquote[type="cite"]:not([qctoggled="true"]) {
+ padding-bottom: 0px ! important;
 }
 
 blockquote[type="cite"][qctoggled="true"] {
